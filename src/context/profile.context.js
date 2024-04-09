@@ -1,4 +1,4 @@
-import React,{ createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {auth, database} from '../misc/firebase';
 const ProfileContext=createContext();
 export const ProfileProvider=({children})=>{

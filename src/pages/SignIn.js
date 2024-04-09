@@ -1,4 +1,4 @@
-import React,{Alert} from 'react'
+// import React,{Alert} from 'react'
 import { Button, Col, Container, Grid, Icon, Panel, Row } from 'rsuite'
 import { auth, database } from '../misc/firebase'
 import firebase from 'firebase/app';

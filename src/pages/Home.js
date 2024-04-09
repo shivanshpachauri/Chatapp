@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import { Col, Grid, Row } from 'rsuite'
 import Sidebar from '../components/Sidebar'
 const Home = () => {
