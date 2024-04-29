@@ -3,7 +3,7 @@ import {Button,Icon,Modal,Form,FormGroup,Schema,ControlLabel,FormControl} from '
 import { useModalState } from '../misc/custom-hooks';
 import firebase from 'firebase/app';
 // import { useModalState } from '../misc/custom-hooks';
-import { database } from '../misc/firebase';
+import { database, auth } from '../misc/firebase';
 const {StringType }=Schema.Types;
 
 const model=Schema.Model({
@@ -30,7 +30,10 @@ const CreateRoomBtnModal = () => {
         setIsLoading(true);
         const newRoomdata={
             ...formValue,
-            createdAt: firebase.database.ServerValue.TIMESTAMP
+            createdAt: firebase.database.ServerValue.TIMESTAMP,
+            admins: {
+                [auth.currentUser.uid]: true,
+              },
         }
         try {
             await database.ref('rooms').push(newRoomdata);
