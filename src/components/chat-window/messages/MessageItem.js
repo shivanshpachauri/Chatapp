@@ -10,7 +10,7 @@ import { useHover } from '../../../misc/custom-hooks';
 import IconBtnControl from './IconBtnControl';
 import { useMediaQuery } from '../../../misc/custom-hooks';
 
-const MessageItem = ({ message, handleAdmin, handleLike }) => {
+const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
   const { author, createdAt, text, likes, likeCount } = message;
   const [selfRef, isHovered] = useHover();
   const isMobile = useMediaQuery('(max-width: 992px)');
@@ -23,14 +23,13 @@ const MessageItem = ({ message, handleAdmin, handleLike }) => {
   const canShowIcons = isMobile || isHovered;
   const isLiked = likes && Object.keys(likes).includes(auth.currentUser.uid);
 
-
   return (
     <li
       className={`padded mb-1 cursor-pointer ${isHovered ? 'bg-black-02' : ''}`}
       ref={selfRef}
     >
       <div className="d-flex align-items-center font-bolder mb-1">
-      <PresenceDot uid={author.uid} />
+        <PresenceDot uid={author.uid} />
         <ProfileAvatar
           src={author.avatar}
           name={author.name}
@@ -38,11 +37,11 @@ const MessageItem = ({ message, handleAdmin, handleLike }) => {
           size="xs"
         />
 
-      <ProfileInfoBtnModal
+        <ProfileInfoBtnModal
           profile={author}
           appearance="link"
           className="p-0 ml-1 text-black"
-          >
+        >
           {canGrantAdmin && (
             <Button block onClick={() => handleAdmin(author.uid)} color="blue">
               {isMsgAuthorAdmin
@@ -56,16 +55,22 @@ const MessageItem = ({ message, handleAdmin, handleLike }) => {
           className="font-normal text-black-45 ml-2"
         />
 
-<IconBtnControl
-          
+        <IconBtnControl
           {...(isLiked ? { color: 'red' } : {})}
           isVisible={canShowIcons}
-          
           iconName="heart"
           tooltip="Like this message"
           onClick={() => handleLike(message.id)}
           badgeContent={likeCount}
         />
+        {isAuthor && (
+          <IconBtnControl
+            isVisible={canShowIcons}
+            iconName="close"
+            tooltip="Delete this message"
+            onClick={() => handleDelete(message.id)}
+          />
+        )}
       </div>
 
       <div>
