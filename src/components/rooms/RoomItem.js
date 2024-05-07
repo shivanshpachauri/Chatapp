@@ -6,18 +6,17 @@ const RoomItem = ({ room }) => {
 
   return (
     <div>
-     <div className="d-flex justify-content-between align-items-center">
-        
+      <div className="d-flex justify-content-between align-items-center">
         <h3 className="text-disappear">{name}</h3>
         <TimeAgo
-           datetime={
+          datetime={
             lastMessage ? new Date(lastMessage.createdAt) : new Date(createdAt)
           }
           className="font-normal text-black-45"
         />
-     </div>
-     <div className="d-flex align-items-center text-black-70">
-     {lastMessage ? (
+      </div>
+      <div className="d-flex align-items-center text-black-70">
+        {lastMessage ? (
           <>
             <div className="d-flex align-items-center">
               <ProfileAvatar
@@ -29,15 +28,15 @@ const RoomItem = ({ room }) => {
 
             <div className="text-disappear ml-2">
               <div className="italic">{lastMessage.author.name}</div>
-              <span>{lastMessage.text}</span>
+              <span>{lastMessage.text || lastMessage.file.name}</span>
             </div>
           </>
         ) : (
           <span>No messages yet...</span>
         )}
-     </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default RoomItem
+export default RoomItem;
