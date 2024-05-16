@@ -1,0 +1,11 @@
+deploy the app------done
+151f725 added firebase messaging and store user token in the db
+3eb9ce5 added service worker
+c326526 setup cloud functions with nvm
+6d82f30 added cloud function to send fcm messages
+6cd269e fix spelling errors
+e60b447 manage fcm from client; call cloud function and send fcm
+7b9c53e manage fcm users with ask fcm btn modal
+37d96de added error boundary
+cff8854 add lazy loading
+key=

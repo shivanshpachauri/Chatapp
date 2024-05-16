@@ -23,9 +23,7 @@ const Messages = () => {
   const loadMessages = useCallback(
     limitToLast => {
       const node = selfRef.current;
-
       messagesRef.off();
-
       messagesRef
         .orderByChild('roomId')
         .equalTo(chatId)
