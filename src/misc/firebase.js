@@ -3,6 +3,10 @@ import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/storage';
 import 'firebase/messaging';
+import 'firebase/functions';
+import { isLocalhost } from './helpers';
+import { Notification as Toast } from 'rsuite';
+
 const config = {
   apiKey: 'AIzaSyAd3MlmqIEO2UyhgDKY_t6C1F5Bg8ff-y0',
   authDomain: 'chat-web-app-8e950.firebaseapp.com',
@@ -17,6 +21,7 @@ const app = firebase.initializeApp(config);
 export const auth = app.auth();
 export const database = app.database();
 export const storage = app.storage();
+export const functions = app.functions('europe-west3');
 export const messaging = firebase.messaging.isSupported()
   ? app.messaging()
   : null;
@@ -26,7 +31,12 @@ if (messaging) {
     'BF4cXTUGPCGwG9NgwOHTZjhzTxK-w85yiQOcNDS0lrln7Kpf8FX-dWIZrVU64QD8MKKoAngN1t5hhGOpYm-Gbc0'
   );
 
-  messaging.onMessage(data => {
-    console.log(data);
+  messaging.onMessage(({ notification }) => {
+    const { title, body } = notification;
+    Toast.info({ title, description: body, duration: 0 });
   });
+}
+
+if (isLocalhost) {
+  functions.useFunctionsEmulator('http://localhost:5001');
 }

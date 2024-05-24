@@ -6,6 +6,7 @@ import { useCurrentRoom } from '../../../context/current-room.context';
 import { useMediaQuery } from '../../../misc/custom-hooks';
 import RoomInfoBtnModal from './RoomInfoBtnModal';
 import EditRoomBtnDrawer from './EditRoomBtnDrawer';
+import SendFcmBtnModal from './SendFcmBtnModal';
 const Top = () => {
   const name = useCurrentRoom(v => v.name);
   const isMobile = useMediaQuery('(max-width: 992px)');
@@ -14,7 +15,7 @@ const Top = () => {
   return (
     <div>
       <div className="d-flex justify-content-between align-items-center">
-      <h4 className="text-disappear d-flex align-items-center">
+        <h4 className="text-disappear d-flex align-items-center">
           <Icon
             componentClass={Link}
             to="/"
@@ -30,17 +31,16 @@ const Top = () => {
         </h4>
 
         <ButtonToolbar className="ws-nowrap">
-        {isAdmin && <EditRoomBtnDrawer />}
+          {isAdmin && <EditRoomBtnDrawer />}
         </ButtonToolbar>
       </div>
 
       <div className="d-flex justify-content-between align-items-center">
-        <span>todo</span>
+        {isAdmin && <SendFcmBtnModal />}
         <RoomInfoBtnModal />
       </div>
     </div>
   );
-  
 };
 
 export default memo(Top);
