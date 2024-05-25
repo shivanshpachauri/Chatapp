@@ -1,4 +1,4 @@
-import   { memo } from 'react';
+import { memo } from 'react';
 import { Button, Drawer, Alert } from 'rsuite';
 import { useParams } from 'react-router';
 import { useModalState, useMediaQuery } from '../../../misc/custom-hooks';
@@ -36,7 +36,7 @@ const EditRoomBtnDrawer = () => {
   };
 
   return (
-    <div>
+    <>
       <Button className="br-circle" size="sm" color="red" onClick={open}>
         A
       </Button>
@@ -67,7 +67,7 @@ const EditRoomBtnDrawer = () => {
           </Button>
         </Drawer.Footer>
       </Drawer>
-    </div>
+    </>
   );
 };
 

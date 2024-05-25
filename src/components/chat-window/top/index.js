@@ -7,6 +7,8 @@ import { useMediaQuery } from '../../../misc/custom-hooks';
 import RoomInfoBtnModal from './RoomInfoBtnModal';
 import EditRoomBtnDrawer from './EditRoomBtnDrawer';
 import SendFcmBtnModal from './SendFcmBtnModal';
+import AskFcmBtnModal from './AskfcmBtnModal';
+
 const Top = () => {
   const name = useCurrentRoom(v => v.name);
   const isMobile = useMediaQuery('(max-width: 992px)');
@@ -31,6 +33,7 @@ const Top = () => {
         </h4>
 
         <ButtonToolbar className="ws-nowrap">
+          <AskFcmBtnModal />
           {isAdmin && <EditRoomBtnDrawer />}
         </ButtonToolbar>
       </div>
