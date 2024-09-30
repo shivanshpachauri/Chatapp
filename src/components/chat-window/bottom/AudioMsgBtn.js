@@ -11,7 +11,12 @@ const AudioMsgBtn = ({ afterUpload }) => {
   const [isUploading, setIsUploading] = useState(false);
 
   const onClick = useCallback(() => {
-    setIsRecording(p => !p);
+    try {
+      ReactMic.init();
+      setIsRecording(p => !p);
+    } catch (error) {
+      console.log('error occurred' + error);
+    }
   }, []);
 
   const onUpload = useCallback(

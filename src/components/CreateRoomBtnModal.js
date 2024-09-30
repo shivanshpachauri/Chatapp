@@ -48,14 +48,14 @@ const CreateRoomBtnModal = () => {
     };
     try {
       await database.ref('rooms').push(newRoomdata);
-      window.alert(`${formValue.name} has been created`);
+      alert(`${formValue.name} has been created`);
       setIsLoading(false);
 
       setFormvalue(INITIAL_FORM);
       close();
     } catch (err) {
       setIsLoading(false);
-      window.alert(err.message);
+      alert(err.message);
     }
   };
   return (

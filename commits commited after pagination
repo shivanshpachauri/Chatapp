@@ -5,7 +5,7 @@ c326526 setup cloud functions with nvm --------------- done
 6d82f30 added cloud function to send fcm messages----------- done
 6cd269e fix spelling errors
 e60b447 manage fcm from client; call cloud function and send fcm
-7b9c53e manage fcm users with ask fcm btn modal
+7b9c53e manage fcm users with ask fcm btn modal---------------- done
 37d96de added error boundary
 cff8854 add lazy loading
 key=

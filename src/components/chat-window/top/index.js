@@ -7,7 +7,7 @@ import { useMediaQuery } from '../../../misc/custom-hooks';
 import RoomInfoBtnModal from './RoomInfoBtnModal';
 import EditRoomBtnDrawer from './EditRoomBtnDrawer';
 import SendFcmBtnModal from './SendFcmBtnModal';
-import AskFcmBtnModal from './AskfcmBtnModal';
+import AskFcmBtnModal from './AskFcmBtnModal';
 
 const Top = () => {
   const name = useCurrentRoom(v => v.name);
